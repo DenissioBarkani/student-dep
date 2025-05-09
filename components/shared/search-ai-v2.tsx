@@ -4,7 +4,6 @@ import { useCompanyContext } from "@/lib/hooks/CompanyContext";
 import { cn } from "@/lib/utils";
 import { Loader2, Paperclip, Search, Send, Sparkles, X } from "lucide-react";
 import { useRef, useState } from "react";
-import { staticCompanies } from "@/data/static-data";
 
 interface SearchAiV2Props {
   className?: string;
@@ -54,37 +53,56 @@ export const SearchAiV2 = ({ className }: SearchAiV2Props) => {
     try {
       setIsLoading(true);
 
-      if (isAiMode) {
-        // For AI mode, we'll just filter the static companies based on the search text
-        const filteredCompanies = staticCompanies.filter(
-          (company) =>
-            company.name.toLowerCase().includes(searchText.toLowerCase()) ||
-            company.description
-              .toLowerCase()
-              .includes(searchText.toLowerCase()) ||
-            company.tags.some((tag) =>
-              tag.text.toLowerCase().includes(searchText.toLowerCase())
-            )
-        );
+      // Always return the same three companies regardless of search input
+      const filteredCompanies = [
+        {
+          id: 1,
+          name: "Начни карьеру в ИТ",
+          imageUrl:
+            "https://cdn-it.fut.ru/api/storage/api/files/show-img/3481cc66-fece-4a4c-85e8-ba7b50251c2c_small.webp",
+          description:
+            "На стажировке тебя ждет полное погружение в ИТ-индустрию. С первого дня ты будешь работать с реальными задачами и набираться опыта, а ментор и коллеги будут поддерживать тебя и делиться своей экспертизой",
+          tags: [
+            { id: 1, text: "Удаленка" },
+            { id: 2, text: "Берут выпускников" },
+            { id: 3, text: "Гибкий график" },
+          ],
+          deadline: "10 марта",
+          places: 8,
+        },
+        {
+          id: 2,
+          name: "Озон",
+          imageUrl: "/company/sapka_dlia_kataloga_small.png",
+          description:
+            "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах, решение которых принесет пользу клиентам и нашим сотрудникам",
+          tags: [
+            { id: 1, text: "Удаленка" },
+            { id: 2, text: "Гибкий график" },
+            { id: 3, text: "Оффлайн" },
+          ],
+          deadline: "31 декабря",
+          places: 10,
+        },
+        {
+          id: 3,
+          name: "Сбер",
+          imageUrl:
+            "https://it.fut.ru/api/storage/api/files/show-img/c1b7b1f3-62d1-4cdc-a55f-886da21e9341_small.webp",
+          description:
+            "Работайте в крупнейшем банке России над инновационными финансовыми технологиями",
+          tags: [
+            { id: 1, text: "Оффлайн" },
+            { id: 2, text: "Соцпакет" },
+            { id: 3, text: "Карьера" },
+          ],
+          deadline: "20 февраля",
+          places: 15,
+        },
+      ];
 
-        setCompanies(filteredCompanies);
-        setSearch(true);
-      } else if (searchText?.trim()) {
-        // For regular search, we'll also filter the static companies
-        const filteredCompanies = staticCompanies.filter(
-          (company) =>
-            company.name.toLowerCase().includes(searchText.toLowerCase()) ||
-            company.description
-              .toLowerCase()
-              .includes(searchText.toLowerCase()) ||
-            company.tags.some((tag) =>
-              tag.text.toLowerCase().includes(searchText.toLowerCase())
-            )
-        );
-
-        setCompanies(filteredCompanies);
-        setSearch(true);
-      }
+      setCompanies(filteredCompanies);
+      setSearch(true);
 
       if (formRef.current) {
         formRef.current.reset();
