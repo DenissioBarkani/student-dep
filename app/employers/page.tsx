@@ -32,14 +32,31 @@ import { useEffect, useState } from "react";
 // import { Card } from "@/components/ui/card";
 // import Link from "next/link";
 
+const ITEMS_PER_PAGE = 5;
+
 export default function EmployersPage() {
   const [students, setStudents] = useState<Student[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [page, setPage] = useState(1);
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   useEffect(() => {
     setStudents(mockStudents);
   }, []);
+
+  const handlePageChange = (newPage: number) => {
+    if (
+      newPage >= 1 &&
+      newPage <= Math.ceil(filteredStudents.length / ITEMS_PER_PAGE)
+    ) {
+      setPage(newPage);
+    }
+  };
+
+  const handleFilterChange = (filters: string[]) => {
+    setActiveFilters(filters);
+    // Reset to first page when filters change
+    setPage(1);
+  };
 
   const selectedFiltersExample = [
     { id: 1, text: "IT" },
@@ -66,6 +83,24 @@ export default function EmployersPage() {
     { id: 22, text: "1 000 000 ₽" },
   ];
 
+  // Filter students based on active filters
+  const filteredStudents = students.filter((student) => {
+    if (activeFilters.length === 0) return true;
+
+    // Check if student's desired positions match any active filter
+    return student.desiredPositions.some((position) =>
+      activeFilters.some((filter) =>
+        position.toLowerCase().includes(filter.toLowerCase())
+      )
+    );
+  });
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredStudents.length / ITEMS_PER_PAGE);
+  const startIndex = (page - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentStudents = filteredStudents.slice(startIndex, endIndex);
+
   return (
     <Container className="mt-10">
       <div className=" mb-8">
@@ -82,6 +117,7 @@ export default function EmployersPage() {
           <Filters
             sections={employersFilters}
             selectedFilters={selectedFiltersExample}
+            onFilterChange={handleFilterChange}
           />
         </div>
         <div className="flex-1">
@@ -104,7 +140,7 @@ export default function EmployersPage() {
 
           <div className="flex flex-col">
             <div className="grid gap-6">
-              {students.map((student) => (
+              {currentStudents.map((student) => (
                 <StudentCard key={student.id} student={student} />
               ))}
 
@@ -113,20 +149,65 @@ export default function EmployersPage() {
               <StudentCard id={"3"} />
               <StudentCard id={"4"} /> */}
 
-              {students.length > 0 && (
+              {filteredStudents.length > 0 && (
                 <Pagination className="mt-4">
                   <PaginationContent>
                     <PaginationItem>
-                      <PaginationPrevious href="#" />
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePageChange(page - 1);
+                        }}
+                      />
                     </PaginationItem>
                     <PaginationItem>
-                      <PaginationLink href="#">1</PaginationLink>
+                      <PaginationLink
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePageChange(1);
+                        }}>
+                        1
+                      </PaginationLink>
                     </PaginationItem>
+                    {page > 2 && (
+                      <PaginationItem>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                    )}
+                    {page > 1 && page < totalPages && (
+                      <PaginationItem>
+                        <PaginationLink href="#" isActive>
+                          {page}
+                        </PaginationLink>
+                      </PaginationItem>
+                    )}
+                    {page < totalPages - 1 && (
+                      <PaginationItem>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                    )}
+                    {totalPages > 1 && (
+                      <PaginationItem>
+                        <PaginationLink
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handlePageChange(totalPages);
+                          }}>
+                          {totalPages}
+                        </PaginationLink>
+                      </PaginationItem>
+                    )}
                     <PaginationItem>
-                      <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationNext href="#" />
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePageChange(page + 1);
+                        }}
+                      />
                     </PaginationItem>
                   </PaginationContent>
                 </Pagination>

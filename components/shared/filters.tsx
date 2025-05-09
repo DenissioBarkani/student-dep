@@ -14,12 +14,30 @@ export interface FilterSection {
 interface Props {
   className?: string;
   sections: FilterSection[];
+  selectedFilters?: { id: number; text: string }[];
+  onFilterChange?: (filters: string[]) => void;
 }
 
-export const Filters: React.FC<Props> = ({ className, sections = [] }) => {
+export const Filters: React.FC<Props> = ({
+  className,
+  sections = [],
+  selectedFilters = [],
+  onFilterChange,
+}) => {
   const [radioValues, setRadioValues] = React.useState<Record<number, string>>(
     {}
   );
+
+  const handleRadioChange = (index: number, value: string) => {
+    setRadioValues((prev) => ({
+      ...prev,
+      [index]: value,
+    }));
+    if (onFilterChange) {
+      onFilterChange([value]);
+    }
+  };
+
   return (
     <div className={cn("hidden w-full md:block md:w-[250px]", className)}>
       <div className="space-y-4">
@@ -29,14 +47,7 @@ export const Filters: React.FC<Props> = ({ className, sections = [] }) => {
               <FilterRadioGroup
                 options={section.options as RadioOptionProps[]}
                 selected={radioValues[index] || section.options[0].value}
-                // ------Разобраться в коде----------
-                onValueChange={(value) =>
-                  setRadioValues((prev) => ({
-                    ...prev,
-                    [index]: value,
-                  }))
-                }
-                // -------------------
+                onValueChange={(value) => handleRadioChange(index, value)}
                 title={section.title}
               />
             ) : (
