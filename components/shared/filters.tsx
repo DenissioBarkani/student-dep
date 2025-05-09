@@ -33,8 +33,11 @@ export const Filters: React.FC<Props> = ({
       ...prev,
       [index]: value,
     }));
+
+    // Используем selectedFilters для определения текущих активных фильтров
+    const currentFilters = selectedFilters.map((filter) => filter.text);
     if (onFilterChange) {
-      onFilterChange([value]);
+      onFilterChange([...currentFilters, value]);
     }
   };
 
