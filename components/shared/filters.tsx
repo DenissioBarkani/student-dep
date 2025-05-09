@@ -14,33 +14,12 @@ export interface FilterSection {
 interface Props {
   className?: string;
   sections: FilterSection[];
-  selectedFilters?: { id: number; text: string }[];
-  onFilterChange?: (filters: string[]) => void;
 }
 
-export const Filters: React.FC<Props> = ({
-  className,
-  sections = [],
-  selectedFilters = [],
-  onFilterChange,
-}) => {
+export const Filters: React.FC<Props> = ({ className, sections = [] }) => {
   const [radioValues, setRadioValues] = React.useState<Record<number, string>>(
     {}
   );
-
-  const handleRadioChange = (index: number, value: string) => {
-    setRadioValues((prev) => ({
-      ...prev,
-      [index]: value,
-    }));
-
-    // Используем selectedFilters для определения текущих активных фильтров
-    const currentFilters = selectedFilters.map((filter) => filter.text);
-    if (onFilterChange) {
-      onFilterChange([...currentFilters, value]);
-    }
-  };
-
   return (
     <div className={cn("hidden w-full md:block md:w-[250px]", className)}>
       <div className="space-y-4">
@@ -50,7 +29,14 @@ export const Filters: React.FC<Props> = ({
               <FilterRadioGroup
                 options={section.options as RadioOptionProps[]}
                 selected={radioValues[index] || section.options[0].value}
-                onValueChange={(value) => handleRadioChange(index, value)}
+                // ------Разобраться в коде----------
+                onValueChange={(value) =>
+                  setRadioValues((prev) => ({
+                    ...prev,
+                    [index]: value,
+                  }))
+                }
+                // -------------------
                 title={section.title}
               />
             ) : (

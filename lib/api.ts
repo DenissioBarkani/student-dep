@@ -1,21 +1,24 @@
 // import { CompanyProps } from "@/components/shared/company-card";
 import { CompanyProps } from "@/components/shared/company-card";
+import { staticCompanies } from "@/data/static-data";
 
 export default async function fetchCompany(page: number, perPage: number = 12) {
   try {
-    const res = await fetch(
-      `http://localhost:3006/companies?_page=${page}&_per_page=${perPage}`
-    );
+    // Calculate start and end indices for pagination
+    const startIndex = (page - 1) * perPage;
+    const endIndex = startIndex + perPage;
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const data = await res.json();
+    // Get paginated data from static companies
+    const paginatedData = staticCompanies.slice(startIndex, endIndex);
+
+    // Calculate total pages
+    const totalItems = staticCompanies.length;
+    const totalPages = Math.ceil(totalItems / perPage);
 
     return {
-      companyData: data.data as CompanyProps[],
-      pages: data.pages,
-      items: data.items,
+      companyData: paginatedData,
+      pages: totalPages,
+      items: totalItems,
     };
   } catch (error) {
     console.log("Error in fetchCompany:", error);

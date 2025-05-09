@@ -4,6 +4,7 @@ import { useCompanyContext } from "@/lib/hooks/CompanyContext";
 import { cn } from "@/lib/utils";
 import { Loader2, Paperclip, Search, Send, Sparkles, X } from "lucide-react";
 import { useRef, useState } from "react";
+import { staticCompanies } from "@/data/static-data";
 
 interface SearchAiV2Props {
   className?: string;
@@ -18,7 +19,7 @@ export const SearchAiV2 = ({ className }: SearchAiV2Props) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { setCompanies,setSearch } = useCompanyContext();
+  const { setCompanies, setSearch } = useCompanyContext();
 
   const autoResizeTextarea = () => {
     if (textareaRef.current) {
@@ -41,16 +42,10 @@ export const SearchAiV2 = ({ className }: SearchAiV2Props) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    // formData.append("file", file );
-
     const searchText = formData.get("search") as string;
-    console.log("Строка", searchText);
     const file = formData.get("file") as File | null;
-    console.log(e.currentTarget);
-    console.log(formData);
     const hasValidFile = file && file.size > 0;
-    console.log("Условие строки", !!searchText?.trim());
-    console.log("Условие файла", file);
+
     if (!searchText?.trim() && !hasValidFile) {
       alert("Введите данные или прикрепите файл");
       return;
@@ -60,46 +55,35 @@ export const SearchAiV2 = ({ className }: SearchAiV2Props) => {
       setIsLoading(true);
 
       if (isAiMode) {
-        const submitData = new FormData();
-        if (searchText?.trim()) {
-          submitData.append("text", searchText);
-        }
-        if (file) {
-          submitData.append("file", file);
-        }
-        const res = await fetch("http://localhost:3100/upload", {
-          method: "POST",
-          body: submitData,
-        });
+        // For AI mode, we'll just filter the static companies based on the search text
+        const filteredCompanies = staticCompanies.filter(
+          (company) =>
+            company.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            company.description
+              .toLowerCase()
+              .includes(searchText.toLowerCase()) ||
+            company.tags.some((tag) =>
+              tag.text.toLowerCase().includes(searchText.toLowerCase())
+            )
+        );
 
-        if (!res.ok) {
-          throw new Error("Ошибка при отправке формы");
-        }
+        setCompanies(filteredCompanies);
+        setSearch(true);
+      } else if (searchText?.trim()) {
+        // For regular search, we'll also filter the static companies
+        const filteredCompanies = staticCompanies.filter(
+          (company) =>
+            company.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            company.description
+              .toLowerCase()
+              .includes(searchText.toLowerCase()) ||
+            company.tags.some((tag) =>
+              tag.text.toLowerCase().includes(searchText.toLowerCase())
+            )
+        );
 
-        const data = await res.json();
-        console.log("Файл загружен:", data.companies);
-        // -----
-        setCompanies(data.companies);
-        setSearch(true)
-      } else {
-        if (searchText?.trim()) {
-          const submitData = new FormData();
-          submitData.append("text", searchText);
-
-          const res = await fetch("http://localhost:3100/upload", {
-            method: "POST",
-            body: submitData,
-          });
-
-          if (!res.ok) {
-            throw new Error("Ошибка при поиске");
-          }
-
-          const data = await res.json();
-          console.log("Результаты поиска:", data.companies);
-          setCompanies(data.companies);
-          setSearch(true)
-        }
+        setCompanies(filteredCompanies);
+        setSearch(true);
       }
 
       if (formRef.current) {
@@ -111,7 +95,7 @@ export const SearchAiV2 = ({ className }: SearchAiV2Props) => {
         textareaRef.current.style.height = "auto";
       }
     } catch (error) {
-      console.error("Ошибка отправки:", error);
+      console.error("Ошибка поиска:", error);
     } finally {
       setTimeout(() => {
         setIsLoading(false);

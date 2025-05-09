@@ -3,11 +3,12 @@ export interface Student {
   name: string;
   university: string;
   course: number;
-  direction: string;
-  salary: string;
+  specialty: string;
+  salary: number;
+  imageUrl: string;
   desiredPositions: string[];
   skills: string[];
-  aboutMe: string;
+  aboutMe?: string;
 }
 
 export const students: Student[] = [
@@ -16,8 +17,9 @@ export const students: Student[] = [
     name: "Янькин Олег Никитович",
     university: "Донской государственный технический университет",
     course: 2,
-    direction: "09.03.04",
-    salary: "10 500 ₽",
+    specialty: "09.03.04",
+    salary: 10500,
+    imageUrl: "/company/cardStudent.jpg",
     desiredPositions: ["Web-разработчик", "Повар"],
     skills: ["C++", "Командная работа", "NextJS"],
     aboutMe:
@@ -28,8 +30,9 @@ export const students: Student[] = [
     name: "Иванов Иван Иванович",
     university: "Донской государственный технический университет",
     course: 3,
-    direction: "09.03.04",
-    salary: "15 000 ₽",
+    specialty: "09.03.04",
+    salary: 15000,
+    imageUrl: "/company/cardStudentGirl.webp",
     desiredPositions: ["Frontend Developer", "UI/UX Designer"],
     skills: ["React", "TypeScript", "Figma"],
     aboutMe:
