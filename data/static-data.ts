@@ -20,7 +20,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 2,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах, решение которых принесет пользу клиентам и нашим сотрудникам",
     tags: [
@@ -109,7 +110,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 8,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах, решение которых принесет пользу клиентам и нашим сотрудникам",
     tags: [
@@ -168,7 +170,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 12,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -227,7 +230,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 16,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -286,7 +290,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 20,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -345,7 +350,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 24,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -404,7 +410,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 28,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -463,7 +470,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 32,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -522,7 +530,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 36,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -581,7 +590,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 40,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -640,7 +650,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 44,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -699,7 +710,8 @@ export const staticCompanies: CompanyProps[] = [
   {
     id: 48,
     name: "Озон",
-    imageUrl: "/company/sapka_dlia_kataloga_small.png",
+    imageUrl:
+      "https://cdn.fut.ru/api/storage/api/files/show-img/f99f807a-9cc4-4e6c-8476-151421ebfd33_small.webp",
     description:
       "Стань частью крупнейшей IT-экосистемы страны, участвуй в реальных задачах",
     tags: [
@@ -750,7 +762,7 @@ export const staticStudents: Student[] = [
     course: 3,
     specialty: "Прикладная информатика",
     salary: 50000,
-    imageUrl: "/company/cardStudent.jpg",
+    imageUrl: "/company/cardStudentMan.jpg",
     desiredPositions: ["Frontend", "Backend"],
     skills: ["JavaScript", "React", "Node.js", "TypeScript"],
     aboutMe:
@@ -776,7 +788,7 @@ export const staticStudents: Student[] = [
     course: 2,
     specialty: "Компьютерные науки",
     salary: 45000,
-    imageUrl: "/company/cardStudent.jpg",
+    imageUrl: "/company/cardStudentMan.jpg",
     desiredPositions: ["Mobile", "Frontend"],
     skills: ["Swift", "Kotlin", "React Native", "UI/UX"],
     aboutMe:
