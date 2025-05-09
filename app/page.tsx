@@ -144,14 +144,7 @@ function PaginationContent() {
               {!search && paginationData.pages > 1 && (
                 <PaginationWithLinks
                   totalItems={paginationData.totalItems}
-                  pageSizeSelectOptions={{
-                    pageSizeSearchParam: "pageSize",
-                    options: [
-                      { value: "9", label: "9" },
-                      { value: "12", label: "12" },
-                      { value: "15", label: "15" },
-                    ],
-                  }}
+            
                 />
               )}
             </div>

@@ -121,33 +121,13 @@ export default function EmployersPage() {
           />
         </div>
         <div className="flex-1">
-          {/* <Categories className="mb-8" /> */}
 
-          {/* <div className="mb-5">
-            <div className="flex gap-4">
-              <Select defaultValue="light">
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="light">20 профилей</SelectItem>
-                  <SelectItem value="dark">30 профилей</SelectItem>
-                  <SelectItem value="system">50 профилей</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div> */}
 
           <div className="flex flex-col">
             <div className="grid gap-6">
               {currentStudents.map((student) => (
                 <StudentCard key={student.id} student={student} />
               ))}
-
-              {/* <StudentCard id={"1"} />
-              <StudentCard id={"2"} />
-              <StudentCard id={"3"} />
-              <StudentCard id={"4"} /> */}
 
               {filteredStudents.length > 0 && (
                 <Pagination className="mt-4">
