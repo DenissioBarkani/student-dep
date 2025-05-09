@@ -74,6 +74,8 @@ export const staticStudents: Student[] = [
     imageUrl: "/company/cardStudent.jpg",
     desiredPositions: ["Web-разработчик", "Повар"],
     skills: ["C++", "Командная работа", "NextJS"],
+    aboutMe:
+      "Увлеченный разработчик, специализирующийся на создании веб-приложений. Имею опыт работы с современными технологиями и фреймворками. Активно изучаю новые инструменты разработки и всегда готов к новым вызовам.",
   },
   {
     id: "2",
@@ -85,6 +87,8 @@ export const staticStudents: Student[] = [
     imageUrl: "/company/cardStudentGirl.webp",
     desiredPositions: ["Frontend Developer", "UI/UX Designer"],
     skills: ["React", "TypeScript", "Figma"],
+    aboutMe:
+      "Креативный разработчик с фокусом на создание пользовательских интерфейсов. Увлекаюсь дизайном и разработкой современных веб-приложений. Имею опыт работы в команде и готов к новым проектам.",
   },
   {
     id: "3",
@@ -96,6 +100,8 @@ export const staticStudents: Student[] = [
     imageUrl: "/company/cardStudentGirl.webp",
     desiredPositions: ["Fullstack", "DevOps"],
     skills: ["Python", "Django", "Docker", "AWS"],
+    aboutMe:
+      "Опытный разработчик с глубокими знаниями в области веб-разработки и DevOps. Увлекаюсь автоматизацией процессов и оптимизацией производительности. Готова к сложным проектам и постоянному обучению.",
   },
   {
     id: "4",
@@ -107,5 +113,7 @@ export const staticStudents: Student[] = [
     imageUrl: "/company/cardStudent.jpg",
     desiredPositions: ["Mobile", "Frontend"],
     skills: ["Swift", "Kotlin", "React Native", "UI/UX"],
+    aboutMe:
+      "Мобильный разработчик с опытом создания кросс-платформенных приложений. Увлекаюсь UI/UX дизайном и созданием интуитивно понятных интерфейсов. Стремлюсь к созданию качественных и удобных приложений.",
   },
 ];

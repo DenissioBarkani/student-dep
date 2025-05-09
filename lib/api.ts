@@ -1,5 +1,4 @@
 // import { CompanyProps } from "@/components/shared/company-card";
-import { CompanyProps } from "@/components/shared/company-card";
 import { staticCompanies } from "@/data/static-data";
 
 export default async function fetchCompany(page: number, perPage: number = 12) {

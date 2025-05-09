@@ -15,6 +15,7 @@ export interface Student {
   imageUrl: string;
   desiredPositions: string[];
   skills: string[];
+  aboutMe?: string;
 }
 
 interface Props {
